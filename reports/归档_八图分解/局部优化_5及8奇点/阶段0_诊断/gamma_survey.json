@@ -1,0 +1,58 @@
+[
+  {
+    "cn": "4\u5947\u70b9",
+    "gamma_midrange": 0.418,
+    "gamma_core": 0.516,
+    "depth_exp": 0.891,
+    "depth_model": 0.986
+  },
+  {
+    "cn": "5\u5947\u70b9",
+    "gamma_midrange": 0.723,
+    "gamma_core": 0.668,
+    "depth_exp": 0.886,
+    "depth_model": 0.961
+  },
+  {
+    "cn": "6\u5947\u70b9",
+    "gamma_midrange": 0.983,
+    "gamma_core": 0.771,
+    "depth_exp": 0.923,
+    "depth_model": 0.964
+  },
+  {
+    "cn": "8\u5947\u70b9(1)",
+    "gamma_midrange": 0.57,
+    "gamma_core": 0.586,
+    "depth_exp": 0.872,
+    "depth_model": 0.97
+  },
+  {
+    "cn": "8\u5947\u70b9(2)",
+    "gamma_midrange": 0.531,
+    "gamma_core": 0.848,
+    "depth_exp": 0.917,
+    "depth_model": 0.947
+  },
+  {
+    "cn": "9\u5947\u70b9",
+    "gamma_midrange": 0.597,
+    "gamma_core": 1.333,
+    "depth_exp": 0.976,
+    "depth_model": 0.939
+  },
+  {
+    "cn": "10\u5947\u70b9",
+    "gamma_midrange": 0.804,
+    "gamma_core": 1.248,
+    "depth_exp": 0.931,
+    "depth_model": 0.882
+  },
+  {
+    "cn": "11\u5947\u70b9",
+    "gamma_midrange": 0.366,
+    "gamma_core": 0.795,
+    "depth_exp": 0.909,
+    "depth_model": 0.951
+  }
+]

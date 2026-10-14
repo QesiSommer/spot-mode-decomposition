@@ -1,0 +1,130 @@
+# ============================================================
+# 数据与权重（体积巨大，绝不入库）
+# ============================================================
+data/
+data_*/
+real_img_decompositions*/
+real_lit_data/
+test_group/
+checkpoints/
+checkpoints_*/
+
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pkl
+*.bin
+
+# ============================================================
+# 神经网络线（路线①）——代码不发布，见 README「技术路线说明」
+# 保留此段以防后续误提交
+# ============================================================
+model.py
+model_weight.py
+dataset.py
+train.py
+train_weight.py
+eval_weight.py
+generate_offline_data.py
+export_full_decomposition.py
+infer_and_reconstruct.py
+infer_experimental.py
+infer_single_image.py
+infer_sample_compare.py
+batch_decompose.py
+analyze_top5.py
+eval_topk.py
+eval_batch_10.py
+topk_energy_analysis.py
+ab_compare.py
+decompose_N12_compare.py
+sharpen_test.py
+sharpening_analysis.py
+truncation_probe.py
+validate_csv.py
+make_report_docx.py
+monitor.py
+
+# ============================================================
+# 实验图像：绝不入库（见 README 第一节说明）
+# 交付五联图前两栏即"实验原图 / 预处理后"，等同实验数据，故整体排除。
+# 此段作为安全网：即使误将图片拷入仓库，git 也不会收录。
+# ============================================================
+figures/
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.bmp
+*.gif
+
+# ============================================================
+# 日志与临时产物
+# ============================================================
+*.log
+*.err
+_tmp/
+_tmp_*/
+__pycache__/
+*.pyc
+*.pyo
+.acl_recovery*/
+.dsh_*/
+
+# ============================================================
+# 工具与编辑器残留
+# ============================================================
+.claude/
+.commandcode/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ============================================================
+# 构建/导出中间产物
+# ============================================================
+_github_export/
+_organize/
+_build_github_export.py
+_build_export2.py
+_gen_manifest.py
+_gen_manifest2.py
+_organize_analyze.py
+_organize_delete_ac.py
+_classify.py
+*_writetest.tmp
+
+# ============================================================
+# 第三方文献 PDF（版权原因不入库）
+# ============================================================
+*.pdf
+
+# ============================================================
+# pipeline.py / 搜索脚本的运行产物（每次运行自动生成）
+# ============================================================
+pipeline_out/
+run*/
+demo/
+two_mode_search/
+three_mode_search/
+four_mode_search/
+*_top.csv
+*_three_mode.json
+*_four_mode_*.json
+summary.json
+logs/
+
+# ============================================================
+# 例外：归档目录 reports/归档_八图分解/ 下的同名文件是项目
+# 最终交付结果（证据链），必须入库。上面的通配规则本意是排除
+# 运行产物，不要让它们误伤归档。
+# ============================================================
+!reports/归档_八图分解/**
+!reports/归档_八图分解/**/
+

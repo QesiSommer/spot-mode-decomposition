@@ -1,0 +1,130 @@
+{
+  "true": [
+    {
+      "name": "4Singularities",
+      "C_s02": 0.893118035876293,
+      "passed": true,
+      "warn": [
+        "C_min_32px=0.15"
+      ]
+    },
+    {
+      "name": "8Singularities(1)",
+      "C_s02": 0.9452620805293087,
+      "passed": true,
+      "warn": []
+    },
+    {
+      "name": "5Singularities",
+      "C_s02": 0.9354891746392202,
+      "passed": true,
+      "warn": []
+    },
+    {
+      "name": "6Singularities",
+      "C_s02": 0.9361750393546535,
+      "passed": true,
+      "warn": []
+    },
+    {
+      "name": "8Singularities(2)",
+      "C_s02": 0.8456705437621569,
+      "passed": true,
+      "warn": [
+        "C_min_32px=-0.17"
+      ]
+    },
+    {
+      "name": "9Singularities",
+      "C_s02": 0.8526092078552774,
+      "passed": true,
+      "warn": [
+        "C_min_32px=-0.18"
+      ]
+    },
+    {
+      "name": "11Singularities",
+      "C_s02": 0.8351190449225965,
+      "passed": true,
+      "warn": [
+        "rho_32px=0.24",
+        "C_min_32px=-0.17"
+      ]
+    },
+    {
+      "name": "10Singularities",
+      "C_s02": 0.862852146494304,
+      "passed": true,
+      "warn": []
+    }
+  ],
+  "false": [
+    {
+      "name": "8Singularities(1)",
+      "src": "8Sing1 two-mode champion",
+      "C_s02": 0.9255331685673822,
+      "passed": true,
+      "warn": [
+        "C_min_32px=-0.07"
+      ]
+    },
+    {
+      "name": "5Singularities",
+      "src": "5Sing runner-up (1 core)",
+      "C_s02": 0.9353332542253598,
+      "passed": true,
+      "warn": []
+    },
+    {
+      "name": "10Singularities",
+      "src": "10Sing two-mode",
+      "C_s02": 0.8175777774980435,
+      "passed": false,
+      "warn": [
+        "rho_32px=0.43",
+        "C_min_32px=-0.21",
+        "rho_56px=0.80"
+      ]
+    },
+    {
+      "name": "11Singularities",
+      "src": "11Sing two-mode",
+      "C_s02": 0.8360831987653499,
+      "passed": true,
+      "warn": [
+        "rho_32px=0.33",
+        "C_min_32px=-0.53",
+        "rho_56px=0.80"
+      ]
+    },
+    {
+      "name": "9Singularities",
+      "src": "9Sing three-mode top (12 cores)",
+      "C_s02": 0.8780833363112861,
+      "passed": true,
+      "warn": [
+        "C_min_32px=-0.10"
+      ]
+    },
+    {
+      "name": "10Singularities",
+      "src": "10Sing three-mode close (12 cores)",
+      "C_s02": 0.8231310148931539,
+      "passed": false,
+      "warn": [
+        "C_min_32px=-0.12"
+      ]
+    },
+    {
+      "name": "10Singularities",
+      "src": "10Sing four-mode highest-corr (8 cores)",
+      "C_s02": 0.8619494425174936,
+      "passed": true,
+      "warn": [
+        "rho_32px=0.29",
+        "C_min_32px=0.15",
+        "rho_56px=0.40"
+      ]
+    }
+  ]
+}
