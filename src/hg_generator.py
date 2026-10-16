@@ -241,8 +241,11 @@ class HGModeGenerator:
             -SPATIAL_HALF_RANGE, SPATIAL_HALF_RANGE,
             self.grid_size, dtype=np.float64
         )
-        # 'ij' 索引: X 沿第0轴变化, Y 沿第1轴变化
-        self.X, self.Y = np.meshgrid(x, y, indexing='ij')
+        # 'ij' 索引: 轴0=竖直 y, 轴1=水平 x —— 标准光学约定
+        # (2026-10-16 修正：此前 X 绑定轴0，与学术约定互为转置。
+        #  下游 LGModeBasis 与涡旋场生成均以 z = X + iY 解析构造，
+        #  X=水平、Y=竖直后，z 即标准复平面坐标，约定同步修正。)
+        self.Y, self.X = np.meshgrid(y, x, indexing='ij')
 
     # =========================================================================
     # HG 本征模计算
@@ -292,14 +295,15 @@ class HGModeGenerator:
         )
 
         # --- 缩放坐标 ---
-        # u = √2 · x,  v = √2 · y  (x, y 已是无量纲坐标)
+        # u = √2 · x,  v = √2 · y  (x=水平·轴1, y=竖直·轴0, 标准约定)
+        # self.X 沿轴1 (水平), self.Y 沿轴0 (竖直)
         sqrt2 = np.sqrt(2.0)
         u = self.X * sqrt2
         v = self.Y * sqrt2
 
         # --- Hermite 多项式 ---
-        H_m = hermite(m)(u)
-        H_n = hermite(n)(v)
+        H_m = hermite(m)(u)   # m 沿水平 x
+        H_n = hermite(n)(v)   # n 沿竖直 y
 
         # --- 高斯包络 ---
         gaussian = np.exp(-(self.X**2 + self.Y**2))

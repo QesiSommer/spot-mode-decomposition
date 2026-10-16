@@ -66,7 +66,12 @@ def parse_args():
 
 def build_lg_modes(max_order=10, size=224, extent=4.0, device='cuda'):
     xs = np.linspace(-extent, extent, size)
-    X, Y = np.meshgrid(xs, xs, indexing='ij')
+    # 标准光学约定：方位角 TH = atan2(y, x)，y=竖直(轴0)、x=水平(轴1)。
+    # 'ij' 索引下 axis0=竖直 y、axis1=水平 x，故先 Y 后 X。
+    # (2026-10-16 修正：此前 X 沿轴0，TH 与标准方位角互为转置，
+    #  导致 our LG(p,l) = e^{+i·l·π/2}·std LG(p,-l)——强度相同、
+    #  螺旋相位手性相反。修正后 LG(p,l) 与学术/MATLAB 记号一致。)
+    Y, X = np.meshgrid(xs, xs, indexing='ij')
     R = np.sqrt(X ** 2 + Y ** 2)
     TH = np.arctan2(Y, X)
     idx = []

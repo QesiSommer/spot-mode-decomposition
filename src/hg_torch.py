@@ -82,12 +82,18 @@ class TorchHGEngine(nn.Module):
 
     def _compute_all_hg_modes_numpy(self) -> np.ndarray:
         """使用 numpy/scipy 预计算所有 HG 模式 (与 hg_generator.py 一致)。"""
-        # 坐标网格
+        # 坐标网格 —— 标准光学约定 (Siegman, Saleh & Teich):
+        # HG(m,n) 的 m 沿水平 x (数组轴1), n 沿竖直 y (数组轴0)。
+        # 'ij' 索引下 axis0=竖直 y、axis1=水平 x，故 Y 绑定 x 采样、
+        # X 绑定 y 采样后，Hm 乘 axis1、Hn 乘 axis0。
+        # (2026-10-16 修正：此前 X 绑定 x 且 Hm 乘 axis0，导致实现
+        #  与学术约定互为转置；本修正使 HG(m,n) 光斑 = (m+1)列×(n+1)行，
+        #  与 MATLAB/师姐的约定一致。)
         x = np.linspace(-self.spatial_range, self.spatial_range,
                         self.grid_size, dtype=np.float64)
         y = np.linspace(-self.spatial_range, self.spatial_range,
                         self.grid_size, dtype=np.float64)
-        X, Y = np.meshgrid(x, y, indexing='ij')
+        Y, X = np.meshgrid(y, x, indexing='ij')
 
         modes = np.zeros(
             (self.num_modes, self.grid_size, self.grid_size),
@@ -100,8 +106,9 @@ class TorchHGEngine(nn.Module):
                        * factorial(n, exact=True) * (2.0 ** (m + n)))
             )
             sqrt2 = np.sqrt(2.0)
-            Hm = hermite(m)(X * sqrt2)
-            Hn = hermite(n)(Y * sqrt2)
+            # 标准约定：m 沿水平 x(轴1)、n 沿竖直 y(轴0)
+            Hm = hermite(m)(X * sqrt2)   # X 沿轴1 (水平)
+            Hn = hermite(n)(Y * sqrt2)   # Y 沿轴0 (竖直)
             gaussian = np.exp(-(X**2 + Y**2))
             modes[idx] = (norm * Hm * Hn * gaussian).astype(np.complex64)
 
